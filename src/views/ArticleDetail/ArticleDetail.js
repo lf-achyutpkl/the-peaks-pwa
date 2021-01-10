@@ -26,7 +26,7 @@ const ArticleDetail = () => {
         </section>
         {/* end of top section  */}
         <div className={classes.gridView}>
-          <section className={classes.newsSection}>
+          <section>
             <article>
               <p className={classes.newsDetails}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -71,7 +71,7 @@ const ArticleDetail = () => {
               </p>
             </article>
           </section>
-          <aside className={classes.asideImage}>
+          <aside>
             <figure>
               <img className={classes.thumbnail} src="https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg" />
               <figcaption className={classes.caption}>
