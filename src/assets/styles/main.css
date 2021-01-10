@@ -1,0 +1,28 @@
+/* font used in Top Stories: Seizieme Pro */
+@font-face {
+  font-family: "Georgia";
+  src: local("Georgia"), url(../font/Georgia Gras.ttf) format("truetype");
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+.page-wrp {
+  width: 100%;
+}
+.page-container {
+  max-width: 73.125em;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 512px) {
+}
+
+@media screen and (max-width: 412px) {
+}
