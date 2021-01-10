@@ -1,6 +1,6 @@
-import useStyles from "./style";
+import useStyles from './style';
 
-import { truncate } from "../../utils/ellipsis";
+import { truncate } from '../../utils/ellipsis';
 
 const Card = (props) => {
   const classes = useStyles();
@@ -17,9 +17,7 @@ const Card = (props) => {
 
         <div className={classes.content}>
           <h2 className={classes.title}>{props.title}</h2>
-          {props.description && (
-            <p className={classes.description}>{props.description}</p>
-          )}
+          {props.description && <p className={classes.description}>{props.description}</p>}
         </div>
       </div>
     </article>
