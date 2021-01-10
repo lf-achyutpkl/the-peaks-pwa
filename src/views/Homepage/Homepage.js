@@ -2,6 +2,7 @@ import useStyles from './style';
 
 import Card from '../../components/Card';
 import CategoryLayout from './CategoryLayout';
+import Footer from '../../components/Footer';
 
 import {} from '../../lang/en';
 
@@ -36,6 +37,7 @@ const Homepage = () => {
       <CategoryLayout title="Sports" />
       <CategoryLayout title="Culture" />
       <CategoryLayout title="Life style" />
+      <Footer />
     </main>
   );
 };

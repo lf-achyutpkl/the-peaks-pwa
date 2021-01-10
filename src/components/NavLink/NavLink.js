@@ -1,4 +1,4 @@
-import useStyles from "./style";
+import useStyles from './style';
 
 const NavLink = ({ label, color }) => {
   const classes = useStyles(color);

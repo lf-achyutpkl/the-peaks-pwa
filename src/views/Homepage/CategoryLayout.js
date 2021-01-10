@@ -17,9 +17,9 @@ const CategoryLayout = ({ title, color }) => {
   const classes = useStyles();
 
   return (
-    <>
+    <section>
       <div className={classes.headerWrp}>
-        <h1 className={classes.title}>{title}</h1>
+        <h1 className={classes.sectionTitle}>{title}</h1>
       </div>
 
       <div className={classes.topStoriesSecondGrid}>
@@ -27,7 +27,7 @@ const CategoryLayout = ({ title, color }) => {
         <Card imageUrl={article.imageUrl} title={article.title} description={article.description} />
         <Card imageUrl={article.imageUrl} title={article.title} description={article.description} />
       </div>
-    </>
+    </section>
   );
 };
 

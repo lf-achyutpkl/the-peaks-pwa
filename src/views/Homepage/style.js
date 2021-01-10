@@ -1,4 +1,5 @@
 import { createUseStyles } from 'react-jss';
+import { PRIMARY } from '../../config/colors';
 
 const useStyles = createUseStyles({
   topStoriesFirstGrid: {
@@ -38,8 +39,18 @@ const useStyles = createUseStyles({
     paddingBottom: '30px',
   },
   title: {
-    fontSize: '3em',
+    fontSize: '3rem',
     fontFamily: 'Georgia',
+  },
+  sectionTitle: {
+    fontSize: '2rem',
+    fontFamily: 'Georgia',
+  },
+  footer: {
+    backgroundColor: `${PRIMARY}`,
+    width: '100%',
+    height: '200px',
+    marginTop: '2rem',
   },
 });
 

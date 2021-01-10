@@ -1,9 +1,12 @@
 import { createUseStyles } from 'react-jss';
+import { PRIMARY } from '../../config/colors';
 
 const useStyles = createUseStyles({
-  navWrp: {
+  footer: {
+    backgroundColor: `${PRIMARY}`,
     width: '100%',
-    backgroundColor: 'rgb(209, 64, 38)',
+    height: '200px',
+    marginTop: '2em',
   },
 });
 

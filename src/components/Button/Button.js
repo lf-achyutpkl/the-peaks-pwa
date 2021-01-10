@@ -1,6 +1,6 @@
-import { React } from "react";
+import { React } from 'react';
 
-import useStyles from "./style";
+import useStyles from './style';
 
 function Button(props) {
   const classes = useStyles();
