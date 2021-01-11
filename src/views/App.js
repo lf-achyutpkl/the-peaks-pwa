@@ -1,3 +1,5 @@
+import { QueryClient, QueryClientProvider } from 'react-query';
+
 import ErrorBoundary from '../components/ErrorBoundary';
 
 import Button from '../components/Button/Button';
@@ -6,9 +8,12 @@ import Homepage from '../views/Homepage';
 import ArticleDetail from '../views/ArticleDetail';
 
 function App() {
+  const queryClient = new QueryClient();
   return (
     <ErrorBoundary>
-      <ArticleDetail />
+      <QueryClientProvider client={queryClient}>
+        <Homepage />
+      </QueryClientProvider>
     </ErrorBoundary>
   );
 }

@@ -1,7 +1,5 @@
 import useStyles from './style';
 
-import { truncate } from '../../utils/ellipsis';
-
 const Card = (props) => {
   const classes = useStyles();
   return (
@@ -10,7 +8,7 @@ const Card = (props) => {
         {props.imageUrl && (
           <div className={classes.thumbnailWrp}>
             <figure>
-              <img className={classes.thumbnail} src={props.imageUrl} />
+              <img className={classes.thumbnail} src={props.imageUrl} alt={props.title} />
             </figure>
           </div>
         )}

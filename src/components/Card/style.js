@@ -5,7 +5,7 @@ const useStyles = createUseStyles({
     width: '100%',
     height: '100%',
     backgroundColor: '#09357b',
-    display: 'grid',
+    // display: 'grid',
     alignItems: 'center',
     justifyContent: 'center',
   },
