@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 
 import { fetchSectionNews } from '../../services/newsService';
 
 import useStyles from './style';
 import Card from '../../components/Card';
+import { cacheKey } from '../../config/cacheKey';
+
 /**
- * A component that renders category section on HomePage.
+ * A component that renders category section on HomePage only.
  * @param sectionName section title
  * @param sectionId section id
  * @param color color to render bottom border for cards
@@ -15,17 +18,19 @@ import Card from '../../components/Card';
 const SectionLayout = (props) => {
   const classes = useStyles();
 
-  console.log(props);
   const { sectionId, sectionName, color } = props.section;
+  const [skip, setSkip] = useState(false);
 
-  const [sectionNews, setSectionNews] = useState();
+  const { isLoading, data: sectionNews } = useQuery(cacheKey.homepage[sectionId], () => fetchSectionNews(sectionId), {
+    skip,
+  });
 
   useEffect(() => {
-    (async function getSectionNews() {
-      const news = await fetchSectionNews(sectionId);
-      setSectionNews(news);
-    })();
-  }, []);
+    // check whether data exists
+    if (!isLoading && !!sectionNews) {
+      setSkip(true);
+    }
+  }, [sectionNews, isLoading]);
 
   return (
     <section>
@@ -34,7 +39,10 @@ const SectionLayout = (props) => {
       </div>
 
       <div className={classes.topStoriesSecondGrid}>
-        {sectionNews && sectionNews.map((news) => <Card imageUrl={news.fields.thumbnail} title={news.webTitle} />)}
+        {sectionNews &&
+          sectionNews.map((news) => (
+            <Card key={news.id} id={news.id} imageUrl={news.fields.thumbnail} title={news.webTitle} />
+          ))}
       </div>
     </section>
   );

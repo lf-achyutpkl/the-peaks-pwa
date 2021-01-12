@@ -1,10 +1,14 @@
 import useStyles from './style';
 
+import TopStories from './TopStories';
 import SectionLayout from './SectionLayout';
 import Footer from '../../components/Footer';
-import TopStories from './TopStories';
 
 import { SECTION } from '../../config/sections';
+
+/**
+ * A view than renders home page the application.
+ */
 const Homepage = () => {
   const classes = useStyles();
 

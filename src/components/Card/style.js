@@ -1,11 +1,13 @@
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
+  link: {
+    textDecoration: 'none',
+  },
   cardWrp: {
     width: '100%',
     height: '100%',
     backgroundColor: '#09357b',
-    // display: 'grid',
     alignItems: 'center',
     justifyContent: 'center',
   },
