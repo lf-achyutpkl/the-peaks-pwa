@@ -10,7 +10,7 @@ const Card = (props) => {
 
   return (
     <article>
-      <Link class={classes.link} to={articleRoute}>
+      <Link className={classes.link} to={articleRoute}>
         <div className={classes.cardWrp}>
           {props.imageUrl && (
             <div className={classes.thumbnailWrp}>

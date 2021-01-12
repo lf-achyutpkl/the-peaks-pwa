@@ -1,9 +1,9 @@
 import { createUseStyles } from 'react-jss';
-import { PRIMARY } from '../../config/colors';
 
 const useStyles = createUseStyles({
   main: {
     padding: '1rem',
+    paddingTop: '5rem',
   },
   intro: {
     display: 'grid',
@@ -27,6 +27,7 @@ const useStyles = createUseStyles({
     fontSize: '0.7rem',
     color: '#2f2f2f',
     textTransform: 'uppercase',
+    paddingTop: '30px',
   },
   title: {
     fontSize: '2rem',

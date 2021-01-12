@@ -2,6 +2,7 @@ import useStyles from './style';
 
 import TopStories from './TopStories';
 import SectionLayout from './SectionLayout';
+import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 
 import { SECTION } from '../../config/sections';
@@ -14,6 +15,7 @@ const Homepage = () => {
 
   return (
     <main className={classes.container}>
+      <NavBar />
       <TopStories />
       <SectionLayout section={SECTION.SPORTS} />
       <SectionLayout section={SECTION.CULTURE} />

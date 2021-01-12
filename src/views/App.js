@@ -19,7 +19,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path={routes.HOME} component={Homepage} />
-            <Route path={routes.ARTICLE_DETAIL} component={ArticleDetail} />
+            <Route path={`${routes.ARTICLE_DETAIL}(.*)`} component={ArticleDetail} />
           </Switch>
         </Router>
       </QueryClientProvider>

@@ -1,1 +1,3 @@
-export { ArticleDetail as default } from './ArticleDetail';
+import ArticleDetail from './ArticleDetail';
+
+export default ArticleDetail;

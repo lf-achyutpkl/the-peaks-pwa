@@ -14,8 +14,8 @@ const SearchField = () => {
       <input
         className={`${classes.searchField} ${isActive ? classes.active : ''}`}
         placeholder="Search all news"
-        autocomplete="off"
-        spellcheck="false"
+        autoComplete="off"
+        spellCheck="false"
         dir="auto"
         type="text"
       />

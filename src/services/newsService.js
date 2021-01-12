@@ -17,12 +17,14 @@ const fetchSectionNews = async (sectionId = 'sport') => {
 };
 
 const fetchArticle = async (articleId) => {
-  const url = `https://content.guardianapis.com/${articleId}?api-key=test&show-fields=webPublicationDate,headline,webTitle,body,thumbnail`;
+  const url = `https://content.guardianapis.com/${articleId}?api-key=test&show-fields=headline,standfirst,body&show-elements=image`;
 
   const { response } = await get(url);
+
   return {
+    id: response.content.id,
     title: response.content.fields.headline,
-    standFirst: response.content.fields.standFirst,
+    standFirst: response.content.fields.standfirst,
     publicationDate: response.content.webPublicationDate,
     body: response.content.fields.body,
     media: _getMediaObject(response),
@@ -32,7 +34,7 @@ const fetchArticle = async (articleId) => {
 const _getMediaObject = (response) => {
   let imageObj = {};
 
-  const elements = response.content.eleements;
+  const elements = response.content.elements;
   if (elements.length) {
     const assets = elements[0].assets;
     if (assets.length) {
