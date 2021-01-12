@@ -17,9 +17,9 @@ const Homepage = () => {
     <main className={classes.container}>
       <NavBar />
       <TopStories />
-      <SectionLayout section={SECTION.SPORTS} />
-      <SectionLayout section={SECTION.CULTURE} />
-      <SectionLayout section={SECTION.LIFESTYLE} />
+      <SectionLayout section={SECTION.sport} />
+      <SectionLayout section={SECTION.culture} />
+      <SectionLayout section={SECTION.lifeandstyle} />
       <Footer />
     </main>
   );

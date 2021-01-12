@@ -33,6 +33,10 @@ const ArticleDetail = (props) => {
     }
   }, [article, isLoading]);
 
+  useEffect(() => {
+    article && (document.title = `${article.title} | The Peaks`);
+  }, [article]);
+
   if (isLoading) {
     return 'Loading...';
   }

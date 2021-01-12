@@ -3,10 +3,10 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 import ErrorBoundary from '../components/ErrorBoundary';
 
-import Button from '../components/Button/Button';
-import NavBar from '../components/NavBar';
+import NotFound from '../views/404';
 import Homepage from '../views/Homepage';
 import ArticleDetail from '../views/ArticleDetail';
+import SectionNewsList from '../views/SectionNewsList';
 
 import * as routes from '../config/routes';
 
@@ -20,6 +20,8 @@ function App() {
           <Switch>
             <Route exact path={routes.HOME} component={Homepage} />
             <Route path={`${routes.ARTICLE_DETAIL}(.*)`} component={ArticleDetail} />
+            <Route exact path={`/section/:sectionId(sport|culture|lifeandstyle)`} component={SectionNewsList} />
+            <Route path="*" component={NotFound} />
           </Switch>
         </Router>
       </QueryClientProvider>

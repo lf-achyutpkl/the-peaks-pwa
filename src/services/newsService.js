@@ -16,6 +16,13 @@ const fetchSectionNews = async (sectionId = 'sport') => {
   return response.results;
 };
 
+const fetchAllNewsOfSection = async (sectionId) => {
+  const url = `https://content.guardianapis.com/${sectionId}?api-key=test&show-fields=trailText,thumbnail`;
+
+  const { response } = await get(url);
+  return response.results;
+};
+
 const fetchArticle = async (articleId) => {
   const url = `https://content.guardianapis.com/${articleId}?api-key=test&show-fields=headline,standfirst,body&show-elements=image`;
 
@@ -52,4 +59,4 @@ const _getMediaObject = (response) => {
   return imageObj;
 };
 
-export { fetchTopStories, fetchSectionNews, fetchArticle };
+export { fetchTopStories, fetchSectionNews, fetchArticle, fetchAllNewsOfSection };

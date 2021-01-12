@@ -12,13 +12,15 @@ const Card = (props) => {
     <article>
       <Link className={classes.link} to={articleRoute}>
         <div className={classes.cardWrp}>
-          {props.imageUrl && (
-            <div className={classes.thumbnailWrp}>
+          <div className={classes.thumbnailWrp}>
+            {props.imageUrl ? (
               <figure>
                 <img className={classes.thumbnail} src={props.imageUrl} alt={props.title} />
               </figure>
-            </div>
-          )}
+            ) : (
+              <div>The Peaks</div>
+            )}
+          </div>
 
           <div className={classes.content}>
             <h2 className={classes.title}>{props.title}</h2>

@@ -4,24 +4,28 @@ import { NAV_LINKS } from '../config/colors';
  * A collection of section details used in app.
  */
 export const SECTION = {
-  NEWS_TODAY: {
+  world: {
     sectionId: 'world',
     sectionName: 'News Today',
     color: NAV_LINKS.GREEN,
+    linkTo: '/',
   },
-  SPORTS: {
+  sport: {
     sectionId: 'sport',
     sectionName: 'Sports',
     color: NAV_LINKS.RED,
+    linkTo: '/section/sport',
   },
-  CULTURE: {
+  culture: {
     sectionId: 'culture',
     sectionName: 'Culture',
     color: NAV_LINKS.YELLOW,
+    linkTo: '/section/culture',
   },
-  LIFESTYLE: {
+  lifeandstyle: {
     sectionId: 'lifeandstyle',
     sectionName: 'Life Style',
     color: NAV_LINKS.BLUE,
+    linkTo: '/section/lifeandstyle',
   },
 };

@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom';
 import useStyles from './style';
 
-const NavLink = ({ label, color }) => {
+const NavLink = ({ label, color, linkTo }) => {
   const classes = useStyles(color);
 
   return (
-    <a href="#" className={classes.link}>
+    <Link to={linkTo} className={classes.link}>
       {label}
-    </a>
+    </Link>
   );
 };
 

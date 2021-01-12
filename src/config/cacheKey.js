@@ -5,6 +5,7 @@ const cacheKey = {
     culture: 'homeCulture_3',
     lifeandstyle: 'homeLifestyle_3',
   },
+  section: 'section_',
 };
 
 export { cacheKey };
