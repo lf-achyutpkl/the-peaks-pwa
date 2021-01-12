@@ -21,9 +21,16 @@ import { getItem, setItem } from '../utils/localstorageUtils';
 const BOOKMARK_KEY = 'thePeakBookmarks';
 
 export const addBookmark = (article) => {
+  const articleToBookmark = {
+    articleId: article.id,
+    title: article.title,
+    sectionId: article.sectionId,
+    thumbnailUrl: article.media.imageUrl,
+    createdAt: new Date(),
+  };
   const existingBookmarks = getAllBookmarks();
 
-  const bookmarks = { ...existingBookmarks, [article.id]: { ...article, createdAt: new Date() } };
+  const bookmarks = { ...existingBookmarks, [article.id]: { ...articleToBookmark } };
   setItem(BOOKMARK_KEY, bookmarks);
 };
 

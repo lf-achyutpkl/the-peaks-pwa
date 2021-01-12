@@ -1,7 +1,6 @@
 import { get } from '../utils/httpUtils';
 
 const fetchTopStories = async () => {
-  console.log('fetching top stories server....');
   const url =
     'http://content.guardianapis.com/international?show-editors-picks=true&show-fields=trailText,thumbnail&api-key=test&section=(culture|sport|lifeandstyle|world)&order-by=newest';
 
@@ -34,6 +33,7 @@ const fetchArticle = async (articleId) => {
     standFirst: response.content.fields.standfirst,
     publicationDate: response.content.webPublicationDate,
     body: response.content.fields.body,
+    sectionId: response.content.sectionId,
     media: _getMediaObject(response),
   };
 };

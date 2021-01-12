@@ -7,11 +7,12 @@ import Card from '../../components/Card';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import { SECTION } from '../../config/sections';
+import { isEmpty } from '../../utils/arrayUtils';
 import { cacheKey } from '../../config/cacheKey';
 import { fetchAllNewsOfSection } from '../../services/newsService';
 
 /**
- * View to list down all the news for selected section from NavBar
+ * Page to list down all the news for selected section from NavBar
  *
  * @param {*} props
  */
@@ -37,6 +38,10 @@ const SectionNewsList = (props) => {
     }
   }, [sectionNews, isLoading]);
 
+  useEffect(() => {
+    sectionId && (document.title = `${SECTION[sectionId].sectionName} | The Peaks`);
+  }, [sectionId]);
+
   return (
     <>
       <NavBar />
@@ -46,10 +51,13 @@ const SectionNewsList = (props) => {
         </div>
 
         <div className={classes.topStoriesSecondGrid}>
-          {sectionNews &&
+          {!isEmpty(sectionNews) ? (
             sectionNews.map((news) => (
               <Card key={news.id} id={news.id} imageUrl={news.fields.thumbnail} title={news.webTitle} />
-            ))}
+            ))
+          ) : (
+            <p>No news found.</p>
+          )}
         </div>
       </section>
       <Footer />

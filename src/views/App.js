@@ -9,6 +9,7 @@ import ArticleDetail from '../views/ArticleDetail';
 import SectionNewsList from '../views/SectionNewsList';
 
 import * as routes from '../config/routes';
+import Bookmarks from './Bookmarks';
 
 function App() {
   const queryClient = new QueryClient();
@@ -19,6 +20,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path={routes.HOME} component={Homepage} />
+            <Route exact path={routes.BOOKMARKS} component={Bookmarks} />
             <Route path={`${routes.ARTICLE_DETAIL}(.*)`} component={ArticleDetail} />
             <Route exact path={`/section/:sectionId(sport|culture|lifeandstyle)`} component={SectionNewsList} />
             <Route path="*" component={NotFound} />

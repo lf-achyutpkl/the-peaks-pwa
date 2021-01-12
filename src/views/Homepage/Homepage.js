@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import useStyles from './style';
 
 import TopStories from './TopStories';
@@ -12,6 +14,10 @@ import { SECTION } from '../../config/sections';
  */
 const Homepage = () => {
   const classes = useStyles();
+
+  useEffect(() => {
+    document.title = `Top Stories | The Peaks`;
+  }, []);
 
   return (
     <main className={classes.container}>

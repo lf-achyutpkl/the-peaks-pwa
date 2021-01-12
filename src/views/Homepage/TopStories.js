@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
 import useStyles from './style';
@@ -6,11 +7,13 @@ import Card from '../../components/Card';
 import { cacheKey } from '../../config/cacheKey';
 
 import { fetchTopStories } from '../../services/newsService';
+import BookmarkButton from '../../components/BookmarkButton';
+import { BOOKMARKS } from '../../config/routes';
 
 /**
  * Top Stories section
  */
-const TopStories = () => {
+const TopStories = (props) => {
   const classes = useStyles();
 
   const [skip, setSkip] = useState(false);
@@ -23,6 +26,10 @@ const TopStories = () => {
     }
   }, [topStories, isLoading]);
 
+  const nextPath = (path) => {
+    props.history.push(path);
+  };
+
   if (isLoading) {
     return 'Loading....';
   }
@@ -31,6 +38,9 @@ const TopStories = () => {
     <>
       <div className={classes.headerWrp}>
         <h1 className={classes.title}>Top stories</h1>
+        <div>
+          <BookmarkButton label="view bookmarks" onClick={() => nextPath(BOOKMARKS)} />
+        </div>
       </div>
       <section>
         <div className={classes.topStoriesFirstGrid}>
@@ -64,4 +74,4 @@ const TopStories = () => {
   );
 };
 
-export default TopStories;
+export default withRouter(TopStories);

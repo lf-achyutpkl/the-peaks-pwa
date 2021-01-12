@@ -10,22 +10,6 @@ const useStyles = createUseStyles({
       gridColumn: '1/ span 2',
       gridRow: '1/ span 2',
     },
-    // '& article:nth-of-type(2)': {
-    //   gridColumn: '3',
-    //   gridRow: '1',
-    // },
-    // '& article:nth-of-type(3)': {
-    //   gridColumn: '4',
-    //   gridRow: '1',
-    // },
-    // '& article:nth-of-type(4)': {
-    //   gridColumn: '3',
-    //   gridRow: '2',
-    // },
-    // '& article:nth-of-type(4)': {
-    //   gridColumn: '4',
-    //   gridRow: '2',
-    // },
   },
 
   topStoriesSecondGrid: {
@@ -37,9 +21,6 @@ const useStyles = createUseStyles({
   headerWrp: {
     paddingTop: '50px',
     paddingBottom: '30px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
   title: {
     fontSize: '3rem',
@@ -54,20 +35,6 @@ const useStyles = createUseStyles({
     width: '100%',
     height: '200px',
     marginTop: '2rem',
-  },
-  link: {
-    '&:visited': {
-      color: '#2096f3',
-    },
-    '&:hover': {
-      color: '#2096f3',
-    },
-    '&:active': {
-      color: '#2096f3',
-    },
-    '&:link': {
-      color: '#2096f3',
-    },
   },
 });
 

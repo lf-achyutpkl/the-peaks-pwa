@@ -13,7 +13,6 @@ import { SECTION } from '../../config/sections';
 
 const NavBar = () => {
   const classes = useStyles();
-  Object.values(SECTION).map((section) => console.log(section.sectionName));
 
   return (
     <header>

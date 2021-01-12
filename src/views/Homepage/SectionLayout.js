@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import React, { useEffect, useState } from 'react';
 
 import { fetchSectionNews } from '../../services/newsService';
 
 import useStyles from './style';
 import Card from '../../components/Card';
+import { isEmpty } from '../../utils/arrayUtils';
 import { cacheKey } from '../../config/cacheKey';
 
 /**
@@ -18,7 +20,7 @@ import { cacheKey } from '../../config/cacheKey';
 const SectionLayout = (props) => {
   const classes = useStyles();
 
-  const { sectionId, sectionName, color } = props.section;
+  const { sectionId, sectionName, color, linkTo } = props.section;
   const [skip, setSkip] = useState(false);
 
   const { isLoading, data: sectionNews } = useQuery(cacheKey.homepage[sectionId], () => fetchSectionNews(sectionId), {
@@ -36,13 +38,19 @@ const SectionLayout = (props) => {
     <section>
       <div className={classes.headerWrp}>
         <h1 className={classes.sectionTitle}>{sectionName}</h1>
+        <Link className={classes.link} to={linkTo}>
+          See all
+        </Link>
       </div>
 
       <div className={classes.topStoriesSecondGrid}>
-        {sectionNews &&
+        {!isEmpty(sectionNews) ? (
           sectionNews.map((news) => (
             <Card key={news.id} id={news.id} imageUrl={news.fields.thumbnail} title={news.webTitle} />
-          ))}
+          ))
+        ) : (
+          <p>No news available</p>
+        )}
       </div>
     </section>
   );
