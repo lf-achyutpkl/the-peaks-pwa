@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import { ARTICLE_DETAIL } from '../../config/routes';
 import useStyles from './style';
+import { ARTICLE_DETAIL } from '../../config/routes';
+import Image from '../Image';
 
 const Card = (props) => {
   const classes = useStyles();
@@ -13,13 +14,7 @@ const Card = (props) => {
       <Link className={classes.link} to={articleRoute}>
         <div className={classes.cardWrp}>
           <div className={classes.thumbnailWrp}>
-            {props.imageUrl ? (
-              <figure>
-                <img className={classes.thumbnail} src={props.imageUrl} alt={props.title} />
-              </figure>
-            ) : (
-              <div>The Peaks</div>
-            )}
+            {props.isThumbnailVisible && <Image imageUrl={props.imageUrl} altText={props.title} />}
           </div>
 
           <div className={classes.content}>
@@ -30,6 +25,10 @@ const Card = (props) => {
       </Link>
     </article>
   );
+};
+
+Card.defaultProps = {
+  isThumbnailVisible: true,
 };
 
 export { Card };

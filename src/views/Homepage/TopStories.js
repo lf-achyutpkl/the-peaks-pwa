@@ -53,8 +53,8 @@ const TopStories = (props) => {
             />
             <Card imageUrl={topStories[1].fields.thumbnail} title={topStories[1].webTitle} id={topStories[1].id} />
             <Card imageUrl={topStories[2].fields.thumbnail} title={topStories[2].webTitle} id={topStories[2].id} />
-            <Card title={topStories[3].webTitle} id={topStories[3].id} />
-            <Card title={topStories[4].webTitle} id={topStories[4].id} />
+            <Card title={topStories[3].webTitle} id={topStories[3].id} isThumbnailVisible={false} />
+            <Card title={topStories[4].webTitle} id={topStories[4].id} isThumbnailVisible={false} />
           </div>
           <div className={classes.topStoriesSecondGrid}>
             {topStories &&

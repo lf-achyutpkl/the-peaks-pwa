@@ -14,10 +14,6 @@ const useStyles = createUseStyles({
   thumbnailWrp: {
     lineHeight: '11px',
   },
-  thumbnail: {
-    objectFit: 'cover',
-    width: '100%',
-  },
   content: {
     color: 'WHITE',
     padding: '10px 10px 20px',
