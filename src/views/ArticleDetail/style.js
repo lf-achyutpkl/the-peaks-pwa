@@ -53,6 +53,9 @@ const useStyles = createUseStyles({
     color: '#959595',
     lineHeight: '1rem',
   },
+  spinnerWrp: {
+    height: 'calc(100vh - 462px)',
+  },
 });
 
 export default useStyles;

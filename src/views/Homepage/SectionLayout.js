@@ -8,6 +8,7 @@ import useStyles from './style';
 import Card from '../../components/Card';
 import { isEmpty } from '../../utils/arrayUtils';
 import { cacheKey } from '../../config/cacheKey';
+import Spinner from '../../components/Spinner';
 
 /**
  * A component that renders category section on HomePage only.
@@ -43,15 +44,19 @@ const SectionLayout = (props) => {
         </Link>
       </div>
 
-      <div className={classes.topStoriesSecondGrid}>
-        {!isEmpty(sectionNews) ? (
-          sectionNews.map((news) => (
-            <Card key={news.id} id={news.id} imageUrl={news.fields.thumbnail} title={news.webTitle} />
-          ))
-        ) : (
-          <p>No news available</p>
-        )}
-      </div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div className={classes.topStoriesSecondGrid}>
+          {!isEmpty(sectionNews) ? (
+            sectionNews.map((news) => (
+              <Card key={news.id} id={news.id} imageUrl={news.fields.thumbnail} title={news.webTitle} />
+            ))
+          ) : (
+            <p>No news available</p>
+          )}
+        </div>
+      )}
     </section>
   );
 };

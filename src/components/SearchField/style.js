@@ -2,18 +2,6 @@ import { createUseStyles } from 'react-jss';
 import { WHITE } from '../../config/colors';
 
 const useStyles = createUseStyles({
-  // searchBoxWrp: {
-  //   width: '95px',
-  //   height: '36px',
-  //   borderBottom: `2px solid ${WHITE}`,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   display: 'flex',
-  //   cursor: 'pointer',
-  //   '&:hover': {
-  //     opacity: 0.75,
-  //   },
-  // },
   searchField: (searchIcon) => ({
     backgroundColor: 'transparent',
     backgroundImage: `url(${searchIcon})`,
