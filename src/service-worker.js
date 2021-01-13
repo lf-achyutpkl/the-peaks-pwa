@@ -69,4 +69,17 @@ self.addEventListener('message', (event) => {
   }
 });
 
-// Any other custom service worker logic can go here.
+// Stale while revalidate cache strategy is added.
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    caches.open('the-peak-offline-data').then(function (cache) {
+      return cache.match(event.request).then(function (response) {
+        var fetchPromise = fetch(event.request).then(function (networkResponse) {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        });
+        return response || fetchPromise;
+      });
+    })
+  );
+});

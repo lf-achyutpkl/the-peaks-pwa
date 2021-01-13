@@ -6,6 +6,7 @@ import useStyles from './style';
 import Card from '../../components/Card';
 import { cacheKey } from '../../config/cacheKey';
 
+import { isEmpty } from '../../utils/arrayUtils';
 import { fetchTopStories } from '../../services/newsService';
 import BookmarkButton from '../../components/BookmarkButton';
 import { BOOKMARKS } from '../../config/routes';
@@ -39,7 +40,7 @@ const TopStories = (props) => {
           <BookmarkButton label="view bookmark" onClick={() => nextPath(BOOKMARKS)} />
         </div>
       </div>
-      {isLoading ? (
+      {isLoading || isEmpty(topStories) ? (
         <Spinner />
       ) : (
         <section>
