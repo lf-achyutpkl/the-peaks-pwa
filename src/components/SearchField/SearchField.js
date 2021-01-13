@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import useStyles from './style';
 import searchIcon from '../../assets/images/search-icon.png';
 
