@@ -19,16 +19,17 @@ const fetchTopStories = async (orderBy = 'newest') => {
   return response.editorsPicks;
 };
 
-const fetchSectionNews = async (sectionId, orderBy = 'newest', pageSize = 20) => {
+const fetchSectionNews = async (sectionId, orderBy = 'newest', pageSize = 20, page = 1) => {
   const queryParamsObj = {
     'show-fields': 'trailText,thumbnail',
     'api-key': getAPIKey(),
     'order-by': orderBy,
     'page-size': pageSize,
+    page: page,
   };
   const queryParamsStr = jsonToQueryParams(queryParamsObj);
 
-  const sectionNewsUrl = `${BASE_URL}/${sectionId}?${queryParamsStr}`;
+  const sectionNewsUrl = `${BASE_URL}${sectionId}?${queryParamsStr}`;
   const { response } = await get(sectionNewsUrl);
 
   return response.results;

@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query';
 import { withRouter } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroller';
 
 import useStyles from './style';
 import Card from '../../components/Card';
