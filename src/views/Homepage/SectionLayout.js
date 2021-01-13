@@ -21,7 +21,7 @@ import Spinner from '../../components/Spinner';
 const SectionLayout = (props) => {
   const classes = useStyles();
 
-  const { sectionId, sectionName, color, linkTo } = props.section;
+  const { sectionId, sectionName, linkTo } = props.section;
   const [skip, setSkip] = useState(false);
 
   const { isLoading, data: sectionNews } = useQuery(

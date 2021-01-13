@@ -48,16 +48,6 @@ const SectionNewsList = (props) => {
   }, [sectionId, sectionId]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const articleList = await fetchSectionNews(sectionId, 'newest', PAGE_SIZE, page);
-
-      if (!articleList.length) {
-        setIsLastPage(true);
-      }
-
-      setArticles([...articles, ...articleList]);
-    };
-
     fetchData();
   }, [page, sectionId]);
 
@@ -67,6 +57,16 @@ const SectionNewsList = (props) => {
     if (target.isIntersecting) {
       setPage((page) => page + 1);
     }
+  };
+
+  const fetchData = async () => {
+    const articleList = await fetchSectionNews(sectionId, 'newest', PAGE_SIZE, page);
+
+    if (!articleList.length) {
+      setIsLastPage(true);
+    }
+
+    setArticles([...articles, ...articleList]);
   };
 
   // handle when user changes page from nav bar
