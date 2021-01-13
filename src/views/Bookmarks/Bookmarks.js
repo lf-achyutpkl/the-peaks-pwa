@@ -35,7 +35,7 @@ const Bookmarks = () => {
               <Card key={news.articleId} id={news.articleId} imageUrl={news.thumbnailUrl} title={news.title} />
             ))
           ) : (
-            <p>Sorry, bookmark list is empty.</p>
+            <p className={classes.nodata}>Sorry, bookmark list is empty.</p>
           )}
         </div>
       </section>

@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import useStyles from './style';
 
@@ -7,28 +8,45 @@ import SectionLayout from './SectionLayout';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 
-import { SECTION } from '../../config/sections';
+import { ARTICLE_SORT_ORDER, SECTION } from '../../config/sections';
+import Header from '../../components/Header';
+import BookmarkButton from '../../components/BookmarkButton';
+import { BOOKMARKS } from '../../config/routes';
 
 /**
  * A view than renders home page the application.
  */
-const Homepage = () => {
+const Homepage = (props) => {
   const classes = useStyles();
+
+  const [orderBy, setOrderBy] = useState(ARTICLE_SORT_ORDER[0]);
 
   useEffect(() => {
     document.title = `Top Stories | The Peaks`;
   }, []);
 
+  const nextPath = (path) => {
+    props.history.push(path);
+  };
+
   return (
     <main className={classes.container}>
       <NavBar />
-      <TopStories />
-      <SectionLayout section={SECTION.sport} />
-      <SectionLayout section={SECTION.culture} />
-      <SectionLayout section={SECTION.lifeandstyle} />
+      <Header
+        title="Top stories"
+        orderByOptions={ARTICLE_SORT_ORDER}
+        selected={orderBy}
+        onChange={(selected) => setOrderBy(selected)}
+      >
+        <BookmarkButton label="view bookmark" onClick={() => nextPath(BOOKMARKS)} />
+      </Header>
+      <TopStories orderBy={orderBy.value} />
+      <SectionLayout section={SECTION.sport} orderBy={orderBy.value} />
+      <SectionLayout section={SECTION.culture} orderBy={orderBy.value} />
+      <SectionLayout section={SECTION.lifeandstyle} orderBy={orderBy.value} />
       <Footer />
     </main>
   );
 };
 
-export { Homepage };
+export default withRouter(Homepage);

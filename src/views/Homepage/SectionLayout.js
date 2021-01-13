@@ -25,8 +25,8 @@ const SectionLayout = (props) => {
   const [skip, setSkip] = useState(false);
 
   const { isLoading, data: sectionNews } = useQuery(
-    cacheKey.homepage[sectionId],
-    () => fetchSectionNews(sectionId, 'newest', 3),
+    [cacheKey.homepage[sectionId], props.orderBy],
+    () => fetchSectionNews(sectionId, props.orderBy, 3),
     {
       skip,
     }

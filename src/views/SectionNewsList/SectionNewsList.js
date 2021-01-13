@@ -6,11 +6,12 @@ import useStyles from './style';
 import Card from '../../components/Card';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 import Spinner from '../../components/Spinner';
 
-import { SECTION } from '../../config/sections';
 import { isEmpty } from '../../utils/arrayUtils';
 import { fetchSectionNews } from '../../services/newsService';
+import { ARTICLE_SORT_ORDER, SECTION } from '../../config/sections';
 
 const PAGE_SIZE = 9;
 
@@ -24,6 +25,7 @@ const SectionNewsList = (props) => {
 
   const [page, setPage] = useState(1);
   const [articles, setArticles] = useState([]);
+  const [orderBy, setOrderBy] = useState(ARTICLE_SORT_ORDER[0]);
   const [isLastPage, setIsLastPage] = useState(false);
 
   const sectionId = props.match.params.sectionId;
@@ -45,21 +47,28 @@ const SectionNewsList = (props) => {
     if (loader.current) {
       observer.observe(loader.current);
     }
-  }, [sectionId, sectionId]);
+  }, [sectionId]);
+
+  useEffect(() => {
+    setPage(1);
+    setArticles([]);
+    console.log('called..');
+  }, [orderBy]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const articleList = await fetchSectionNews(sectionId, 'newest', PAGE_SIZE, page);
+      const articleList = await fetchSectionNews(sectionId, orderBy.value, PAGE_SIZE, page);
 
       if (!articleList.length) {
         setIsLastPage(true);
       }
 
-      setArticles([...articles, ...articleList]);
+      setArticles((articles) => [...articles, ...articleList]);
     };
 
     fetchData();
-  }, [articles, page, sectionId]);
+    console.log('fetch data...', page);
+  }, [page, sectionId, orderBy]);
 
   // when user reaches to bottom section, update the page
   const handleObserver = (entities) => {
@@ -79,9 +88,13 @@ const SectionNewsList = (props) => {
     <>
       <NavBar />
       <section>
-        <div className={classes.headerWrp}>
-          <h1 className={classes.sectionTitle}>{SECTION[sectionId].sectionName}</h1>
-        </div>
+        <Header
+          title={SECTION[sectionId].sectionName}
+          orderByOptions={ARTICLE_SORT_ORDER}
+          selected={orderBy}
+          onChange={(selected) => setOrderBy(selected)}
+        />
+
         <div className={classes.topStoriesSecondGrid}>
           {!isEmpty(articles) &&
             articles.map((article) => (

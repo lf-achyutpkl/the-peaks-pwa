@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import React, { useEffect, useState } from 'react';
+
+import Card from '../../components/Card';
+import Spinner from '../../components/Spinner';
 
 import useStyles from './style';
-import Card from '../../components/Card';
 import { cacheKey } from '../../config/cacheKey';
-
 import { isEmpty } from '../../utils/arrayUtils';
 import { fetchTopStories } from '../../services/newsService';
-import BookmarkButton from '../../components/BookmarkButton';
-import { BOOKMARKS } from '../../config/routes';
-import Spinner from '../../components/Spinner';
 
 /**
  * Top Stories section
@@ -19,7 +16,13 @@ const TopStories = (props) => {
   const classes = useStyles();
 
   const [skip, setSkip] = useState(false);
-  const { isLoading, data: topStories } = useQuery(cacheKey.homepage.topStories, () => fetchTopStories(), { skip });
+  const { isLoading, data: topStories } = useQuery(
+    [cacheKey.homepage.topStories, props.orderBy],
+    () => fetchTopStories(props.orderBy),
+    {
+      skip,
+    }
+  );
 
   useEffect(() => {
     // check whether data exists
@@ -28,18 +31,8 @@ const TopStories = (props) => {
     }
   }, [topStories, isLoading]);
 
-  const nextPath = (path) => {
-    props.history.push(path);
-  };
-
   return (
     <>
-      <div className={classes.headerWrp}>
-        <h1 className={classes.title}>Top stories</h1>
-        <div>
-          <BookmarkButton label="view bookmark" onClick={() => nextPath(BOOKMARKS)} />
-        </div>
-      </div>
       {isLoading || isEmpty(topStories) ? (
         <Spinner />
       ) : (
@@ -76,4 +69,4 @@ const TopStories = (props) => {
   );
 };
 
-export default withRouter(TopStories);
+export default TopStories;

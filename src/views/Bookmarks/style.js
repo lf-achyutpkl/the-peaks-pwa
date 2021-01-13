@@ -36,6 +36,9 @@ const useStyles = createUseStyles({
     height: '200px',
     marginTop: '2rem',
   },
+  nodata: {
+    height: 'calc(100vh - 470px)',
+  },
 });
 
 export default useStyles;

@@ -18,7 +18,7 @@ const useStyles = createUseStyles({
     height: '14px',
     width: '18px',
     position: 'absolute',
-    top: '9px',
+    top: '14px',
     left: '7px',
   },
   label: {

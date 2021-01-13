@@ -29,3 +29,8 @@ export const SECTION = {
     linkTo: '/section/lifeandstyle',
   },
 };
+
+export const ARTICLE_SORT_ORDER = [
+  { label: 'Newest First', value: 'newest' },
+  { label: 'Oldest First', value: 'oldest' },
+];

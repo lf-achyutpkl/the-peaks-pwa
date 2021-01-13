@@ -2,8 +2,9 @@ import { get } from '../utils/httpUtils';
 import { getAPIKey } from './environment';
 import { url, BASE_URL } from '../config/apiEnpoints';
 import { jsonToQueryParams } from '../utils/queryParamsUtils';
+import { isEmpty } from '../utils/arrayUtils';
 
-const fetchTopStories = async (orderBy = 'newest') => {
+const fetchTopStories = async (orderBy) => {
   const queryParamsObj = {
     'show-editors-picks': 'true',
     'show-fields': 'trailText,thumbnail',
@@ -63,7 +64,7 @@ const _getMediaObject = (response) => {
   let imageObj = {};
 
   const elements = response.content.elements;
-  if (elements.length) {
+  if (!isEmpty(elements)) {
     const assets = elements[0].assets;
     if (assets.length) {
       const firstImage = assets[0];
