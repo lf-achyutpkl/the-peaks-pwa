@@ -52,6 +52,9 @@ const useStyles = createUseStyles({
     height: '200px',
     marginTop: '2rem',
   },
+  spinnerWrp: {
+    height: 'calc(100vh - 462px)',
+  },
 });
 
 export default useStyles;

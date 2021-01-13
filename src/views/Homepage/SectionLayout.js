@@ -24,9 +24,13 @@ const SectionLayout = (props) => {
   const { sectionId, sectionName, color, linkTo } = props.section;
   const [skip, setSkip] = useState(false);
 
-  const { isLoading, data: sectionNews } = useQuery(cacheKey.homepage[sectionId], () => fetchSectionNews(sectionId), {
-    skip,
-  });
+  const { isLoading, data: sectionNews } = useQuery(
+    cacheKey.homepage[sectionId],
+    () => fetchSectionNews(sectionId, 'newest', 3),
+    {
+      skip,
+    }
+  );
 
   useEffect(() => {
     // check whether data exists

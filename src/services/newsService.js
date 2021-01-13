@@ -1,17 +1,36 @@
 import { get } from '../utils/httpUtils';
+import { getAPIKey } from './environment';
+import { url, BASE_URL } from '../config/apiEnpoints';
+import { jsonToQueryParams } from '../utils/queryParamsUtils';
 
-const fetchTopStories = async () => {
-  const url =
-    'http://content.guardianapis.com/international?show-editors-picks=true&show-fields=trailText,thumbnail&api-key=test&section=(culture|sport|lifeandstyle|world)&order-by=newest';
+const fetchTopStories = async (orderBy = 'newest') => {
+  const queryParamsObj = {
+    'show-editors-picks': 'true',
+    'show-fields': 'trailText,thumbnail',
+    'api-key': getAPIKey(),
+    section: '(culture|sport|lifeandstyle|world)',
+    'order-by': orderBy,
+  };
+  const queryParamsStr = jsonToQueryParams(queryParamsObj);
 
-  const { response } = await get(url);
+  const topStoriesUrl = `${url.topStories}?${queryParamsStr}`;
+  const { response } = await get(topStoriesUrl);
+
   return response.editorsPicks;
 };
 
-const fetchSectionNews = async (sectionId = 'sport') => {
-  const url = `http://content.guardianapis.com/${sectionId}?show-editors-picks=true&show-fields=trailText,thumbnail&api-key=test&section=(culture|sport|lifeandstyle|world)&order-by=newest&page-size=3`;
+const fetchSectionNews = async (sectionId, orderBy = 'newest', pageSize = 20) => {
+  const queryParamsObj = {
+    'show-fields': 'trailText,thumbnail',
+    'api-key': getAPIKey(),
+    'order-by': orderBy,
+    'page-size': pageSize,
+  };
+  const queryParamsStr = jsonToQueryParams(queryParamsObj);
 
-  const { response } = await get(url);
+  const sectionNewsUrl = `${BASE_URL}/${sectionId}?${queryParamsStr}`;
+  const { response } = await get(sectionNewsUrl);
+
   return response.results;
 };
 
