@@ -6,7 +6,6 @@ import { HOME } from '../../config/routes';
 import SearchField from '../SearchField';
 
 import { messages } from '../../lang/en';
-import { NAV_LINKS as navColors } from '../../config/colors';
 
 import Logo from '../../assets/images/logo.png';
 import { SECTION } from '../../config/sections';

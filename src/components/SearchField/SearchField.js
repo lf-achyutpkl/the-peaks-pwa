@@ -1,18 +1,16 @@
 import { useState } from 'react';
 
 import useStyles from './style';
-import { WHITE } from '../../config/colors';
-
 import searchIcon from '../../assets/images/search-icon.png';
 
 const SearchField = () => {
   const classes = useStyles(searchIcon);
 
-  const [isActive, setIsActive] = useState(false);
+  // const [isActive, setIsActive] = useState(false);
   return (
     <div>
       <input
-        className={`${classes.searchField} ${isActive ? classes.active : ''}`}
+        className={`${classes.searchField} ${false ? classes.active : ''}`}
         placeholder="Search all news"
         autoComplete="off"
         spellCheck="false"
