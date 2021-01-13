@@ -1,47 +1,78 @@
-import { useQuery } from 'react-query';
 import { withRouter } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroller';
+import { useEffect, useState, useRef } from 'react';
 
 import useStyles from './style';
+
 import Card from '../../components/Card';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import Spinner from '../../components/Spinner';
+
 import { SECTION } from '../../config/sections';
 import { isEmpty } from '../../utils/arrayUtils';
-import { cacheKey } from '../../config/cacheKey';
 import { fetchSectionNews } from '../../services/newsService';
 
+const PAGE_SIZE = 9;
+
 /**
- * Page to list down all the news for selected section from NavBar
+ * Page to list down all the news for selected section from NavBar with infinite scroll enabled
  *
  * @param {*} props
  */
 const SectionNewsList = (props) => {
   const classes = useStyles();
 
+  const [page, setPage] = useState(1);
+  const [articles, setArticles] = useState([]);
+  const [isLastPage, setIsLastPage] = useState(false);
+
   const sectionId = props.match.params.sectionId;
 
-  const [skip, setSkip] = useState(false);
-
-  const { isLoading, data: sectionNews } = useQuery(
-    `${cacheKey.section}${sectionId}`,
-    () => fetchSectionNews(sectionId, 'newest', 20),
-    {
-      skip,
-    }
-  );
+  const loader = useRef(null);
 
   useEffect(() => {
-    // check whether data exists
-    if (!isLoading && !!sectionNews) {
-      setSkip(true);
-    }
-  }, [sectionNews, isLoading]);
+    var options = {
+      root: null,
+      rootMargin: '20px',
+      threshold: 1.0,
+    };
 
+    // Instantiate IntersetObserver and start observing loader position,
+    // once loader position changes and that matches with rootMargin this will trigger handleObserver.
+    // HandleObserver will update page. And when page chagnes,
+    // there will be an api call which will fetch more data from updated page.
+    const observer = new IntersectionObserver(handleObserver, options);
+    if (loader.current) {
+      observer.observe(loader.current);
+    }
+  }, [sectionId, sectionId]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const articleList = await fetchSectionNews(sectionId, 'newest', PAGE_SIZE, page);
+
+      if (!articleList.length) {
+        setIsLastPage(true);
+      }
+
+      setArticles([...articles, ...articleList]);
+    };
+
+    fetchData();
+  }, [page, sectionId]);
+
+  // when user reaches to bottom section, update the page
+  const handleObserver = (entities) => {
+    const target = entities[0];
+    if (target.isIntersecting) {
+      setPage((page) => page + 1);
+    }
+  };
+
+  // handle when user changes page from nav bar
   useEffect(() => {
     sectionId && (document.title = `${SECTION[sectionId].sectionName} | The Peaks`);
+    setArticles([]);
   }, [sectionId]);
 
   return (
@@ -51,23 +82,17 @@ const SectionNewsList = (props) => {
         <div className={classes.headerWrp}>
           <h1 className={classes.sectionTitle}>{SECTION[sectionId].sectionName}</h1>
         </div>
-
-        {isLoading ? (
-          <div className={classes.spinnerWrp}>
-            <Spinner />
-          </div>
-        ) : (
-          <div className={classes.topStoriesSecondGrid}>
-            {!isEmpty(sectionNews) ? (
-              sectionNews.map((news) => (
-                <Card key={news.id} id={news.id} imageUrl={news.fields.thumbnail} title={news.webTitle} />
-              ))
-            ) : (
-              <p>No news found.</p>
-            )}
-          </div>
-        )}
+        <div className={classes.topStoriesSecondGrid}>
+          {!isEmpty(articles) &&
+            articles.map((article) => (
+              <Card key={article.id} id={article.id} imageUrl={article.fields.thumbnail} title={article.webTitle} />
+            ))}
+        </div>
+        <div ref={loader} className={isLastPage ? classes.hidden : ''}>
+          <Spinner />
+        </div>
       </section>
+
       <Footer />
     </>
   );
