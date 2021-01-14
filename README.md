@@ -10,9 +10,6 @@
   <p align="center">
     A web app build using React JS that display news from a British news media <a href="https://www.theguardian.com/international">The Guardian.</a>
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the project »</strong></a>
-    <br />
-    <br />
     <a href="https://the-thai-peaks.netlify.app/">View Demo</a>
   </p>
 </p>
@@ -46,7 +43,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![The Peaks](https://github.com/lf-achyutpkl/the-peaks-pwa/blob/main/src/assets/images/The-Peaks.png)
 
 This project fetch news from The Guardian newsportal through it's API and display news based on different categories. This is progressive web app (PWA) which you can install it in your laptop or mobile phone. It runs on offline mode as well so please be aware that if you are offline then you might see stale news (cached news since you were online last time).
 
