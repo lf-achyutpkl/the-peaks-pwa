@@ -32,7 +32,13 @@ const Bookmarks = () => {
         <div className={classes.topStoriesSecondGrid}>
           {!isEmpty(articles) ? (
             articles.map((news) => (
-              <Card key={news.articleId} id={news.articleId} imageUrl={news.thumbnailUrl} title={news.title} />
+              <Card
+                key={news.articleId}
+                id={news.articleId}
+                imageUrl={news.thumbnailUrl}
+                title={news.title}
+                sectionId={news.sectionId}
+              />
             ))
           ) : (
             <p className={classes.nodata}>Sorry, bookmark list is empty.</p>

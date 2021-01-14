@@ -5,16 +5,6 @@ const useStyles = createUseStyles({
     padding: '1rem',
     paddingTop: '5rem',
   },
-  // intro: {
-  //   display: 'grid',
-  //   gridTemplateColumns: '1fr 0.6fr',
-  //   gridGap: '2rem',
-  //   '& article': {
-  //     borderBottom: '1px solid #ededed',
-  //     paddingBottom: '20px',
-  //     marginBottom: '20px',
-  //   },
-  // },
   thumbnail: {
     width: '100%',
   },

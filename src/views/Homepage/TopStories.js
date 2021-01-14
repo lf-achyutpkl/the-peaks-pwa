@@ -43,11 +43,32 @@ const TopStories = (props) => {
               imageUrl={topStories[0].fields.thumbnail}
               title={topStories[0].webTitle}
               description={topStories[0].fields.trailText}
+              sectionId={topStories[0].sectionId}
             />
-            <Card imageUrl={topStories[1].fields.thumbnail} title={topStories[1].webTitle} id={topStories[1].id} />
-            <Card imageUrl={topStories[2].fields.thumbnail} title={topStories[2].webTitle} id={topStories[2].id} />
-            <Card title={topStories[3].webTitle} id={topStories[3].id} isThumbnailVisible={false} />
-            <Card title={topStories[4].webTitle} id={topStories[4].id} isThumbnailVisible={false} />
+            <Card
+              imageUrl={topStories[1].fields.thumbnail}
+              title={topStories[1].webTitle}
+              id={topStories[1].id}
+              sectionId={topStories[1].sectionId}
+            />
+            <Card
+              imageUrl={topStories[2].fields.thumbnail}
+              title={topStories[2].webTitle}
+              id={topStories[2].id}
+              sectionId={topStories[2].sectionId}
+            />
+            <Card
+              title={topStories[3].webTitle}
+              id={topStories[3].id}
+              isThumbnailVisible={false}
+              sectionId={topStories[3].sectionId}
+            />
+            <Card
+              title={topStories[4].webTitle}
+              id={topStories[4].id}
+              isThumbnailVisible={false}
+              sectionId={topStories[4].sectionId}
+            />
           </div>
           <div className={classes.topStoriesSecondGrid}>
             {topStories &&
@@ -60,6 +81,7 @@ const TopStories = (props) => {
                     imageUrl={topStory.fields.thumbnail}
                     title={topStory.webTitle}
                     description={topStory.fields.trailText}
+                    sectionId={topStory.sectionId}
                   />
                 ))}
           </div>

@@ -98,7 +98,13 @@ const SectionNewsList = (props) => {
         <div className={classes.topStoriesSecondGrid}>
           {!isEmpty(articles) &&
             articles.map((article) => (
-              <Card key={article.id} id={article.id} imageUrl={getImageUrl(article)} title={article.webTitle} />
+              <Card
+                key={article.id}
+                id={article.id}
+                imageUrl={getImageUrl(article)}
+                title={article.webTitle}
+                sectionId={sectionId}
+              />
             ))}
         </div>
         <div ref={loader} className={isLastPage ? classes.hidden : ''}>

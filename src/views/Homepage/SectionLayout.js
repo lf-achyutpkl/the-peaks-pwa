@@ -54,7 +54,13 @@ const SectionLayout = (props) => {
         <div className={classes.topStoriesSecondGrid}>
           {!isEmpty(sectionNews) ? (
             sectionNews.map((news) => (
-              <Card key={news.id} id={news.id} imageUrl={news.fields.thumbnail} title={news.webTitle} />
+              <Card
+                key={news.id}
+                id={news.id}
+                imageUrl={news.fields.thumbnail}
+                title={news.webTitle}
+                sectionId={news.sectionId}
+              />
             ))
           ) : (
             <p>No news available</p>
