@@ -87,7 +87,7 @@ const SectionNewsList = (props) => {
   return (
     <>
       <NavBar />
-      <section>
+      <section className="page-container">
         <Header
           title={SECTION[sectionId].sectionName}
           orderByOptions={ARTICLE_SORT_ORDER}
@@ -98,7 +98,7 @@ const SectionNewsList = (props) => {
         <div className={classes.topStoriesSecondGrid}>
           {!isEmpty(articles) &&
             articles.map((article) => (
-              <Card key={article.id} id={article.id} imageUrl={article.fields.thumbnail} title={article.webTitle} />
+              <Card key={article.id} id={article.id} imageUrl={getImageUrl(article)} title={article.webTitle} />
             ))}
         </div>
         <div ref={loader} className={isLastPage ? classes.hidden : ''}>
@@ -109,6 +109,14 @@ const SectionNewsList = (props) => {
       <Footer />
     </>
   );
+};
+
+const getImageUrl = (article) => {
+  if (article.fields) {
+    return article.fields.thumbnail;
+  }
+
+  return null;
 };
 
 export default withRouter(SectionNewsList);

@@ -37,7 +37,7 @@ const TopStories = (props) => {
         <Spinner />
       ) : (
         <section>
-          <div className={classes.topStoriesFirstGrid}>
+          <div className={'homepage_topStoriesFirstGrid'}>
             <Card
               id={topStories[0].id}
               imageUrl={topStories[0].fields.thumbnail}

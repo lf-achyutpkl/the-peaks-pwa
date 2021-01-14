@@ -22,7 +22,7 @@ const NavBar = () => {
               <img src={Logo} className={classes.logo} alt={messages.LOGO_ALT_TEXT}></img>
             </Link>
 
-            <div className={classes.rightContainer}>
+            <div className={`${classes.rightContainer} navbar-search-container`}>
               <nav className={classes.navLinkWrp}>
                 {SECTION &&
                   Object.values(SECTION).map((section) => (

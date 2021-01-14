@@ -10,7 +10,7 @@ const Header = ({ title, onChange, selected, orderByOptions, children }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.headerWrp}>
+    <div className={`${classes.headerWrp} page-container`}>
       <h1 className={classes.title}>{title}</h1>
       <div className={classes.leftGroup}>
         {children}

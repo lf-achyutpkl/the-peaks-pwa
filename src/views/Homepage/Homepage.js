@@ -40,10 +40,12 @@ const Homepage = (props) => {
       >
         <BookmarkButton label="view bookmark" onClick={() => nextPath(BOOKMARKS)} />
       </Header>
-      <TopStories orderBy={orderBy.value} />
-      <SectionLayout section={SECTION.sport} orderBy={orderBy.value} />
-      <SectionLayout section={SECTION.culture} orderBy={orderBy.value} />
-      <SectionLayout section={SECTION.lifeandstyle} orderBy={orderBy.value} />
+      <section className="page-container">
+        <TopStories orderBy={orderBy.value} />
+        <SectionLayout section={SECTION.sport} orderBy={orderBy.value} />
+        <SectionLayout section={SECTION.culture} orderBy={orderBy.value} />
+        <SectionLayout section={SECTION.lifeandstyle} orderBy={orderBy.value} />
+      </section>
       <Footer />
     </main>
   );

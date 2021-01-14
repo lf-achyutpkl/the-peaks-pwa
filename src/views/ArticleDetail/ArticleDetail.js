@@ -41,14 +41,14 @@ const ArticleDetail = (props) => {
   return (
     <>
       <NavBar />
-      <main className={classes.main}>
+      <main className={`${classes.main} page-container`}>
         {isLoading ? (
           <div className={classes.spinnerWrp}>
             <Spinner />
           </div>
         ) : (
           <>
-            <section className={classes.intro}>
+            <section className={'articleDetail_intro'}>
               <article>
                 {isBookmarked ? (
                   <BookmarkButton label="Remove Bookmark" onClick={() => handleRemoveBookmark(article)} />
@@ -61,7 +61,7 @@ const ArticleDetail = (props) => {
               </article>
             </section>
             {/* end of top section  */}
-            <div className={classes.gridView}>
+            <div className={'articleDetail_gridView'}>
               <section>
                 <article>
                   <p className={classes.newsDetails} dangerouslySetInnerHTML={{ __html: article.body }} />

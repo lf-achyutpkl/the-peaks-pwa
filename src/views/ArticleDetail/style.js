@@ -5,21 +5,16 @@ const useStyles = createUseStyles({
     padding: '1rem',
     paddingTop: '5rem',
   },
-  intro: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 0.6fr',
-    gridGap: '2rem',
-    '& article': {
-      borderBottom: '1px solid #ededed',
-      paddingBottom: '20px',
-      marginBottom: '20px',
-    },
-  },
-  gridView: {
-    display: 'grid',
-    gridGap: '2rem',
-    gridTemplateColumns: '1.2fr 0.6fr',
-  },
+  // intro: {
+  //   display: 'grid',
+  //   gridTemplateColumns: '1fr 0.6fr',
+  //   gridGap: '2rem',
+  //   '& article': {
+  //     borderBottom: '1px solid #ededed',
+  //     paddingBottom: '20px',
+  //     marginBottom: '20px',
+  //   },
+  // },
   thumbnail: {
     width: '100%',
   },
@@ -47,6 +42,10 @@ const useStyles = createUseStyles({
     fontSize: '0.82rem',
     color: '#2f2f2f',
     lineHeight: '1.25rem',
+    '& img': {
+      width: '100%',
+      objectFit: 'cover',
+    },
   },
   caption: {
     fontSize: '0.75rem',

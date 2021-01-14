@@ -24,7 +24,7 @@ const Bookmarks = () => {
   return (
     <>
       <NavBar />
-      <section>
+      <section className="page-container">
         <div className={classes.headerWrp}>
           <h1 className={classes.sectionTitle}>{messages.ALL_BOOKMARK}</h1>
         </div>
